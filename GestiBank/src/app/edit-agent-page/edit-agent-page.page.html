@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Modifier l'agent {{agent.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form (ngSubmit)="onEditAgent(f)" #f="ngForm">
+
+        <ion-item lines="full"> 
+            <ion-label >Prénom</ion-label>
+
+            <ion-input type="text" name="firstname" value="{{agent.name}}">{{agent.name}}</ion-input>
+        </ion-item>
+
+        <ion-item lines="full"> 
+            <ion-label >Tel</ion-label>
+            <ion-input type="text" name="phone">{{agent.phone}}</ion-input>
+        </ion-item>
+
+        <ion-item lines="full"> 
+            <ion-label >Mail</ion-label>
+
+            <ion-input type="text" name="mail">{{agent.mail}}</ion-input>
+        </ion-item>
+
+        <ion-item lines="full"> 
+            <ion-label >Matricule</ion-label>
+
+            <ion-input type="text" name="matricule">{{agent.matricule}}</ion-input>
+        </ion-item>
+        <ion-item lines="full"> 
+            <ion-label >Mot de passe</ion-label>
+
+            <ion-input type="text" name="password"  >{{agent.password}}</ion-input>
+        </ion-item>
+        <ion-item lines="full"> 
+            <ion-label >Statut</ion-label>
+
+            <ion-input type="text" name="role" >{{agent.activated}}</ion-input>
+        </ion-item>
+
+        <ion-row>
+            <ion-col>
+                <ion-button color="danger" expand="block" >Modifier</ion-button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>

@@ -11,6 +11,50 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'registration',
+    loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
+  {
+    path: 'exchange',
+    loadChildren: () => import('./exchange/exchange.module').then( m => m.ExchangePageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+  },
+  {
+    path: 'client',
+    loadChildren: () => import('./client/client.module').then( m => m.ClientPageModule)
+  },
+  {
+    path: 'agent',
+    loadChildren: () => import('./agent/agent.module').then( m => m.AgentPageModule)
+  },
+  {
+    path: 'agent-list',
+    loadChildren: () => import('./agent-list/agent-list.module').then( m => m.AgentListPageModule)
+  },
+  {
+    path: 'edit-agent-page',
+    loadChildren: () => import('./edit-agent-page/edit-agent-page.module').then( m => m.EditAgentPagePageModule)
+  },
+  {
+    path: 'edit-agent-page',
+    loadChildren: () => import('./edit-agent-page/edit-agent-page.module').then( m => m.EditAgentPagePageModule)
+  },
+  {
+    path: 'agent-list/edit/:mail/:matricule',
+    loadChildren: () => import('./edit-agent-page/edit-agent-page.module').then( m => m.EditAgentPagePageModule)
+  },
 ];
 
 @NgModule({

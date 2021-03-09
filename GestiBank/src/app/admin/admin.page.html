@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <img class="logo" src="assets/logoGestiBank.png" alt="Logo foot">
+    <ion-row>
+        <ion-col>
+            <ion-button type="submit" color="secondary" expand="block" [routerLink]="['/agent-list']">Consulter la liste des agents</ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-button type="submit" color="secondary" expand="block" (click)="presentAddModal()">Ajouter un agent</ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-button type="submit" color="secondary" expand="block">Consuler les demandes</ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-button type="submit" color="danger" expand="block" (click)="signOut()">Se déconnecter</ion-button>
+        </ion-col>
+    </ion-row>
+
+</ion-content>

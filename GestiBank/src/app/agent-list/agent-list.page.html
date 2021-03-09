@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Liste des agents</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div>
+        <ion-grid>
+            <ion-row *ngFor="let a of listAgent; let i=index">
+                <ion-col size="9">
+                    <ion-card >
+                      <ion-card-header>
+                        <ion-card-subtitle>{{ a.name }}</ion-card-subtitle>
+                        <ion-card-subtitle>{{ a.firstname }}</ion-card-subtitle>
+                        <ion-card-subtitle>{{ a.mail }}</ion-card-subtitle>
+
+                      </ion-card-header>   
+                    </ion-card>
+                  </ion-col>
+                  <ion-col size="3">
+                    <div class="ion-text-end">
+                      <ion-button color="medium" (click)="presentModal(a)">
+                        <ion-icon name="create-outline"></ion-icon>
+                      </ion-button>      
+                      <ion-button color="danger" (click)="onDelete(a.mail, a.matricule)">
+                        <ion-icon name="trash-outline" ></ion-icon>
+                      </ion-button> 
+                    </div>
+                    
+                  </ion-col>
+            </ion-row>
+    
+        </ion-grid>
+    </div>
+    
+
+
+</ion-content>

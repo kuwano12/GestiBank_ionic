@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Ajouter un agent</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismissModal()">Fermer</ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form (ngSubmit)="onAddAgent(f)" #f="ngForm">
+        <ion-item lines="full"> 
+            <ion-label >Nom</ion-label>
+
+            <ion-input type="text" name="name" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full"> 
+            <ion-label >Prénom</ion-label>
+
+            <ion-input type="text" name="firstname" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full"> 
+            <ion-label >Tel</ion-label>
+
+            <ion-input type="text" name="phone" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full"> 
+            <ion-label >Mail</ion-label>
+
+            <ion-input type="text" name="mail" ngModel required></ion-input>
+        </ion-item>
+        <ion-row>
+            <ion-col>
+                <ion-button type="submit" color="danger" expand="block" [disabled]="f.invalid">Modifier</ion-button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>

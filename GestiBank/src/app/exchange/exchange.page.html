@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Conversion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-form">
+    <img class="logo" src="assets/logoGestiBank.png" alt="Logo foot">
+    <form #f="ngForm">
+        <ion-item>
+            <ion-label>Devise</ion-label>
+            <ion-select id="currency" name="currency" ngModel>
+                <ion-select-option *ngFor="let c of currencyListKey; let i=index" value="{{i}}" >{{ c }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item lines="full">
+            <ion-label position="floating" >Montant</ion-label>
+            <ion-input type="text" id="amount" name="amount" ngModel (keyup)="convert(f)"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+            <ion-label position="floating"></ion-label>
+            <ion-input type="text" name="result">{{convertRes | number :"1.0-2"}}</ion-input>
+        </ion-item>
+        <!-- <ion-row>
+            <ion-col>
+                <ion-button type="submit" color="danger" expand="block">Convertir</ion-button>
+            </ion-col>
+        </ion-row> -->
+    </form>
+</ion-content>
