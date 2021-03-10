@@ -141,7 +141,7 @@ export class UserService {
 
     addAgent(name: string, firstname: string, phone: string, mail: string, matricule: string){
 
-        const password = Math.random().toString(36).slice(-8);
+        const password = Math.random().toString(36).slice(-8); //Math.random().toString(36).substr(2, 8)
         const agentObject = {
             name: name,
             firstname: firstname,
@@ -166,6 +166,37 @@ export class UserService {
                 )
             }
         );
+    }
+
+    getDemandList(status: string){
+        return new Promise(
+            (resolve, reject) => {
+                this.httpClient.get(this.BASE_URL +"/user/client/" + status).toPromise().then(
+                    (data) => {
+                        resolve(data.valueOf());
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                );
+            }
+        );
+    }
+
+    affectClient(mail: string, agent: string){
+        const obj = {"agent" : agent}
+        return new Promise(
+            (resolve, reject) => {
+                this.httpClient.put(this.BASE_URL + "/user/client/" + mail, obj).toPromise().then(
+                    () => {
+                        resolve(true);
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                )
+            }
+        )
     }
 
     emitAgentList(){

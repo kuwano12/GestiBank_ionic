@@ -40,6 +40,8 @@ export class LoginPage implements OnInit {
                 this.presentToast( "Bienvenue " + this.user["firstname"],"success");
                 if(user["role"] == "ADMIN"){
                     this.router.navigate(['/admin']);
+                }else if(user["role"] == "AGENT"){
+                    this.router.navigate(['/agent']);
                 }
             },
             (error) => {
@@ -57,7 +59,7 @@ export class LoginPage implements OnInit {
           message: msg,
           duration: 2000,
           color: color,
-          position: 'top'
+          position: 'bottom'
         });
         toast.present();
       }

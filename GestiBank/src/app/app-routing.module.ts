@@ -55,6 +55,14 @@ const routes: Routes = [
     path: 'agent-list/edit/:mail/:matricule',
     loadChildren: () => import('./edit-agent-page/edit-agent-page.module').then( m => m.EditAgentPagePageModule)
   },
+  {
+    path: 'demande-list',
+    loadChildren: () => import('./demande-list/demande-list.module').then( m => m.DemandeListPageModule)
+  },
+  {
+    path: 'agent-affected-demande-list',
+    loadChildren: () => import('./agent-affected-demande-list/agent-affected-demande-list.module').then( m => m.AgentAffectedDemandeListPageModule)
+  },
 ];
 
 @NgModule({

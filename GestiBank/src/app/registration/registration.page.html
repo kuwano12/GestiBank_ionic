@@ -25,6 +25,10 @@
             <ion-label position="floating">Tel</ion-label>
             <ion-input type="text" formControlName="phone"></ion-input>
         </ion-item>
+        <ion-item lines="full">
+            <ion-select-option>Courant</ion-select-option>
+            <ion-select-option>Epargne</ion-select-option>
+        </ion-item>
         <ion-row>
             <ion-col>
                 <ion-button type="submit" color="danger" expand="block" [disabled]="!addUserForm.valid">Créer un compte</ion-button>

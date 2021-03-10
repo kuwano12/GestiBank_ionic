@@ -28,8 +28,8 @@ export class AddAgentModalComponent implements OnInit {
         const phone     = form.value["phone"]
         this.userService.getAgentData().then(
             (agentList: any[]) => {
-                this.id = agentList[(agentList.length -1)].matricule + 1;
-                this.id = this.id.toString();
+                let index = Number(agentList[(agentList.length -1)].matricule) + 1;
+                this.id = index.toString();
 
                 this.userService.addAgent(name, firstname, phone, mail, this.id).then(
                     () => {
@@ -39,10 +39,7 @@ export class AddAgentModalComponent implements OnInit {
                 )
 
             }
-        )
-        
-
-        ;
+        );
     }
 
     async presentToast(msg: string, color:string) {

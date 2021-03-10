@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Liste des demandes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngFor="let l of listDemand; let i=index">
+        <form (ngSubmit)="onAffectClient(f, l.mail)" #f="ngForm">
+            <ion-item>
+                <ion-label>{{l.name}}</ion-label>
+                <ion-label>{{l.mail}}</ion-label>
+                <ion-select name="agent" ngModel>
+                    <ion-select-option *ngFor="let a of listAgent">{{a.name}}</ion-select-option>
+                </ion-select>
+                <ion-button color="primary" type="submit">Affecter</ion-button>
+            </ion-item>
+        </form>
+       
+    </ion-list>
+
+</ion-content>
