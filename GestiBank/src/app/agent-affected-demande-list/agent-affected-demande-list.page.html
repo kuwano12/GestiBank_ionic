@@ -1,9 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>agentAffectedDemandeList</ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Liste des demandes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-list *ngFor="let c of clientList; let i=index">
+        <ion-item>
+            <ion-label>{{c.name}}</ion-label>
+            <ion-label>{{c.mail}}</ion-label>
+            <ion-button color="primary" (click)="onActivateClient(c.mail)">Activer</ion-button>
+            <ion-button color="danger" (click)="onDeactivateClient(c.mail)">Désactiver</ion-button>
+        </ion-item>
+    </ion-list>
 </ion-content>

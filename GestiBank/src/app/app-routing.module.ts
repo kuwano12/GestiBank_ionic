@@ -40,6 +40,10 @@ const routes: Routes = [
     loadChildren: () => import('./agent/agent.module').then( m => m.AgentPageModule)
   },
   {
+    path: 'agent/:matricule',
+    loadChildren: () => import('./agent/agent.module').then( m => m.AgentPageModule)
+  },
+  {
     path: 'agent-list',
     loadChildren: () => import('./agent-list/agent-list.module').then( m => m.AgentListPageModule)
   },
@@ -61,6 +65,10 @@ const routes: Routes = [
   },
   {
     path: 'agent-affected-demande-list',
+    loadChildren: () => import('./agent-affected-demande-list/agent-affected-demande-list.module').then( m => m.AgentAffectedDemandeListPageModule)
+  },
+  {
+    path: 'agent-affected-demande-list/:matricule/:agent',
     loadChildren: () => import('./agent-affected-demande-list/agent-affected-demande-list.module').then( m => m.AgentAffectedDemandeListPageModule)
   },
 ];

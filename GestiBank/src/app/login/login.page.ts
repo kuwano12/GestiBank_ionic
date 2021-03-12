@@ -36,12 +36,22 @@ export class LoginPage implements OnInit {
         const password = this.loginForm.get("password").value;
         this.userService.signInUser(mail, password).then(
             (user: User) => {
-                this.user = user;                
-                this.presentToast( "Bienvenue " + this.user["firstname"],"success");
-                if(user["role"] == "ADMIN"){
-                    this.router.navigate(['/admin']);
-                }else if(user["role"] == "AGENT"){
-                    this.router.navigate(['/agent']);
+                if(user){
+                    this.user = user;                
+                    this.presentToast( "Bienvenue " + this.user["firstname"],"success");
+                    if(user["role"] == "ADMIN"){
+                        this.router.navigate(['/admin']);
+                    }else if(user["role"] == "AGENT"){
+                        this.router.navigate(['/agent/' + this.user.matricule]);
+                    }else if(user["role"] == "CLIENT" ){
+                        if(user["activated"] == "t"){
+                            this.router.navigate(['/client/' + this.user.mail]);
+                        }else{
+                            this.presentToast("Compte non actif", "danger");
+                        } 
+                    }
+                }else{
+                    this.presentToast("Identifiants incorrects", "danger");
                 }
             },
             (error) => {
@@ -62,5 +72,5 @@ export class LoginPage implements OnInit {
           position: 'bottom'
         });
         toast.present();
-      }
+    }
 }

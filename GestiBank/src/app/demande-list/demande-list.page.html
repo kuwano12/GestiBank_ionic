@@ -14,6 +14,8 @@
                 <ion-label>{{l.name}}</ion-label>
                 <ion-label>{{l.mail}}</ion-label>
                 <ion-select name="agent" ngModel>
+                    <on-select-option value="" selected disabled hidden>Agents</on-select-option>
+
                     <ion-select-option *ngFor="let a of listAgent">{{a.name}}</ion-select-option>
                 </ion-select>
                 <ion-button color="primary" type="submit">Affecter</ion-button>

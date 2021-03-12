@@ -36,8 +36,7 @@ export class AddAgentModalComponent implements OnInit {
                         this.presentToast("Nouvel agent crée", "success");
                         this.dismissModal();
                     }
-                )
-
+                );
             }
         );
     }

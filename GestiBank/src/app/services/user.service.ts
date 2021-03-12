@@ -39,7 +39,7 @@ export class UserService {
        this.user = {
            name: name,
            firstname: firstname,
-           mail: firstname,
+           mail: mail,
            phone: phone,
            activated: "w",
            role: "CLIENT",
@@ -61,7 +61,11 @@ export class UserService {
             (resolve, reject) => {
                 this.httpClient.post(this.BASE_URL + "/login/" + mail + "/" + password, "").toPromise().then(
                     (data) => {
-                        resolve(data.valueOf());
+                        if(data){
+                            resolve(data.valueOf());
+                        }else{
+                            resolve(false);
+                        }
                     }, 
                     (error) => {
                         reject(error);
@@ -194,9 +198,56 @@ export class UserService {
                     (error) => {
                         reject(error);
                     }
-                )
+                );
             }
-        )
+        );
+    }
+
+    getAgentByMatr(matr: string){
+        return new Promise(
+            (resolve, reject) => {
+                this.httpClient.get(this.BASE_URL + "/user/agent/" + matr).toPromise().then(
+                    (data) => {
+                        resolve(data.valueOf());
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                );
+            }
+        );
+    }
+
+    getAffectedClient(agentName: string){
+        return new Promise(
+            (resolve, reject) => {
+                this.httpClient.get(this.BASE_URL + "/user/client/affected/" + agentName).toPromise().then(
+                    (data) => {
+                        resolve(data.valueOf());
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                );
+            }
+        );
+    }
+
+    changeClientStatus(mail:string, status:string){
+        let password = Math.random().toString(36).substr(2, 8);
+        let obj = {activated : status, password: password}
+        return new Promise(
+            (resolve, reject) => {
+                this.httpClient.put(this.BASE_URL + "/user/client/activate/" + mail, obj).toPromise().then(
+                    () => {
+                        resolve(true);
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                );
+            }
+        );
     }
 
     emitAgentList(){

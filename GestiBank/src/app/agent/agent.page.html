@@ -1,13 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Agent</ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agent {{agentName}} {{agentFirstname}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <ion-row>
         <ion-col>
-            <ion-button type="submit" color="secondary" expand="block">Consulter mes affectations</ion-button>
+            <ion-button type="submit" color="secondary" expand="block" 
+            [routerLink]="['/agent-affected-demande-list/'+ agentMatr + '/' + agentName]">Consulter mes affectations</ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-button type="submit" color="danger" expand="block" (click)="signOut()">Se déconnecter</ion-button>
         </ion-col>
     </ion-row>
 </ion-content>
